@@ -6,6 +6,10 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+        startGame();
+    }
+
+    private static void startGame() {
         int input = 0;
         int count;
         Scanner scanner = new Scanner(System.in);
