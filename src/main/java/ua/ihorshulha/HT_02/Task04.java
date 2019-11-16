@@ -1,6 +1,5 @@
 package ua.ihorshulha.HT_02;
 
-import java.util.Arrays;
 import java.util.Objects;
 
 public class Task04 {
