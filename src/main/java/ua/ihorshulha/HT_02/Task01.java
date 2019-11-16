@@ -2,9 +2,9 @@ package ua.ihorshulha.HT_02;
 
 import java.util.Arrays;
 
-class Task_1 {
+public class Task01 {
 
-    int[] findMaxSubArrayBySum(int[] nums) {
+    static int[] findMaxSubArrayBySum(int[] nums) {
         int result = nums[0];
         int resultStart = 0;
         int resultEnd = 0;
