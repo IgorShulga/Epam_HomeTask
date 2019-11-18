@@ -1,3 +1,9 @@
 /uaihorshulha/uaihorshulha.iml
 /.idea/
 /classes/
+/*.iml/
+/contact.iml
+!/.gitignore
+Epam_HomeTask.iml
+target/
+/Epam_HomeTask.iml

@@ -2,9 +2,12 @@ package ua.ihorshulha.HT_02;
 
 import java.util.Arrays;
 
-public class Task01 {
+public class LargestSumSubarray {
 
-    static int[] findMaxSubArrayBySum(int[] nums) {
+    int[] findMaxSubArrayBySum(int[] nums) {
+        if(nums == null || nums.length == 0){
+            throw new NullPointerException("Array is empty!");
+        }
         int result = nums[0];
         int resultStart = 0;
         int resultEnd = 0;

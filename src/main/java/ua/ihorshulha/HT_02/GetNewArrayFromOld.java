@@ -2,10 +2,13 @@ package ua.ihorshulha.HT_02;
 
 import java.util.Objects;
 
-public class Task04 {
+public class GetNewArrayFromOld {
 
-    static int[] addOneToArrayAsNumber(int[] array) {
+    public int[] addOneToArrayAsNumber(int[] array) {
 
+        if(array == null || array.length == 0){
+            throw new NullPointerException("Array is empty!");
+        }
         int newLength = array.length;
         StringBuilder str = new StringBuilder();
 
