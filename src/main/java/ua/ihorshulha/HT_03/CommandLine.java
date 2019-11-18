@@ -11,7 +11,7 @@ class CommandLine {
         System.out.println("if you want EXIT -> input 0 ");
     }
 
-    static void run(Scanner scanner) {
+    void run(Scanner scanner) {
         System.out.println("Hello! Lets start Game! ");
         int numberOfMenu;
         Choice choice = null;
@@ -57,7 +57,7 @@ class CommandLine {
         while (exit);
     }
 
-    private static boolean isLetsAgain(boolean exit, Scanner scanner) {
+    private boolean isLetsAgain(boolean exit, Scanner scanner) {
         if (!exit) {
             return exit;
         }
