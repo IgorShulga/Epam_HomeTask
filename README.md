@@ -1,2 +1,2 @@
 # Epam_HomeTask
-<img src="https://github.com/IgorShulga/Epam_HomeTask.svg?branch=master">
+<img src="https://travis-ci.org/IgorShulga/Epam_HomeTask.svg?branch=master">
