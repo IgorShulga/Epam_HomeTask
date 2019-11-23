@@ -4,12 +4,23 @@ import static ua.ihorshulha.HT_03.Choice.*;
 
 class GameLogic {
 
-    private final Choice userChoice;
-    private final Choice compChoice;
+    private Choice userChoice;
+    private Choice compChoice;
 
     GameLogic(Choice userChoice) {
         this.userChoice = userChoice;
         this.compChoice = Choice.getRundom();
+    }
+//  For tests
+    public GameLogic() {
+    }
+//  For tests
+    public void setUserChoice(Choice userChoice) {
+        this.userChoice = userChoice;
+    }
+//  For tests
+    public void setCompChoice(Choice compChoice) {
+        this.compChoice = compChoice;
     }
 
     Choice getUserChoice() {

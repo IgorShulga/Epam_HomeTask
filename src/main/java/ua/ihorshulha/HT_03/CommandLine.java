@@ -48,9 +48,12 @@ class CommandLine {
             }
             GameLogic game = new GameLogic(choice);
             if (choice != null) {
-                System.out.println("You chose -> " + game.getUserChoice());
-                System.out.println("Computer chose -> " + game.getCompChoice());
-                System.out.println("The WINNER => " + game.getResult() + "  Congratulations!!!");
+                Choice userChoice = game.getUserChoice();
+                Choice compChoice = game.getCompChoice();
+                Result result = game.getResult();
+                System.out.println("You chose -> " + userChoice);
+                System.out.println("Computer chose -> " + compChoice);
+                System.out.println("The WINNER => " + result + "  Congratulations!!!");
             }
             exit = isLetsAgain(exit, scanner);
         }
