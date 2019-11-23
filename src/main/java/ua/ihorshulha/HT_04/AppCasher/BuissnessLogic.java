@@ -4,19 +4,17 @@ import java.util.Date;
 
 public class BuissnessLogic {
 
-    private final AppView view = new AppView();
-
-    double getDiscount(double amount) {
-        double disc = 0.0;
+    private double getDiscount(double amount) {
+        double disc;
         if (amount == 0 || amount < 0) {
-            throw new IllegalArgumentException("Amount must not be 0 or negativ");
+            throw new IllegalArgumentException("Amount must not be 0 or negative");
         }
         if (amount <= 500.0) {
-            disc = 0.05;
+            disc = 5.0;
         } else if (amount > 500 && amount <= 1000) {
-            disc = 0.10;
+            disc = 10.0;
         } else {
-            disc = 0.15;
+            disc = 15.0;
         }
         return disc;
     }
@@ -28,7 +26,7 @@ public class BuissnessLogic {
 
         receipt.setTotal(amount);
         receipt.setDiscount(disc);
-        receipt.setAmountToPay(amount - (amount * disc));
+        receipt.setAmountToPay(amount - (amount * (100/disc)));
         receipt.setDate(date);
         return receipt;
     }

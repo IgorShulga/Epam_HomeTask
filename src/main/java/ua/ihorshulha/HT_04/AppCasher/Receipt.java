@@ -13,7 +13,7 @@ public class Receipt {
         return date;
     }
 
-    public void setDate(Date date) {
+    void setDate(Date date) {
         this.date = date;
     }
 
@@ -21,7 +21,7 @@ public class Receipt {
         return total;
     }
 
-    public void setTotal(double total) {
+    void setTotal(double total) {
         this.total = total;
     }
 
@@ -29,7 +29,7 @@ public class Receipt {
         return discount;
     }
 
-    public void setDiscount(double discount) {
+    void setDiscount(double discount) {
         this.discount = discount;
     }
 
@@ -37,7 +37,7 @@ public class Receipt {
         return amountToPay;
     }
 
-    public void setAmountToPay(double amountToPay) {
+    void setAmountToPay(double amountToPay) {
         this.amountToPay = amountToPay;
     }
 
@@ -60,10 +60,10 @@ public class Receipt {
     @Override
     public String toString() {
         return "Receipt{" +
-                "date=" + date +
-                ", total=" + total +
-                ", discount=" + discount +
-                ", amountToPay=" + amountToPay +
+                "date = " + date +
+                ", total = " + total +
+                ", discount = " + discount + "% " +
+                ", amountToPay = " + amountToPay +
                 '}';
     }
 }

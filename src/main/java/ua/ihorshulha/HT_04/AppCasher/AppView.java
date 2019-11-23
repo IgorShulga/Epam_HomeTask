@@ -4,9 +4,15 @@ import java.util.Scanner;
 
 public class AppView {
 
-    private double amount;
+    private final BuissnessLogic logic = new BuissnessLogic();
 
-    public double getAmount() {
+    Receipt inputAmount(){
+        double amount = getAmount();
+        return logic.getTotalReciept(amount);
+    }
+
+    private double getAmount() {
+        System.out.println("Please, input total amount = ");
         Scanner scanner = new Scanner(System.in);
         String input = scanner.next();
         if(isCorrectInteger(input)){
