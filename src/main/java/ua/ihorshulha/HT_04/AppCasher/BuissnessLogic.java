@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class BuissnessLogic {
 
-    private double getDiscount(double amount) {
+    double getDiscount(double amount) {
         double disc;
         if (amount == 0 || amount < 0) {
             throw new IllegalArgumentException("Amount must not be 0 or negative");
@@ -26,7 +26,7 @@ public class BuissnessLogic {
 
         receipt.setTotal(amount);
         receipt.setDiscount(disc);
-        receipt.setAmountToPay(amount - (amount * (100/disc)));
+        receipt.setAmountToPay(amount - (amount * (disc/100)));
         receipt.setDate(date);
         return receipt;
     }
