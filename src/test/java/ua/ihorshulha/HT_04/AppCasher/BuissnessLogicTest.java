@@ -4,7 +4,6 @@ import org.junit.Test;
 
 import java.util.Date;
 
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
 
 public class BuissnessLogicTest {
@@ -23,6 +22,7 @@ public class BuissnessLogicTest {
     @Test
     public void testGetTotalReciept() {
         Receipt actual = logic.getTotalReciept(1000);
+        actual.setDate(date);
 
         Receipt expected = new Receipt();
         expected.setTotal(1000);
@@ -30,8 +30,8 @@ public class BuissnessLogicTest {
         expected.setAmountToPay(900);
         expected.setDate(date);
 
-        assertThat(actual).isEqualToComparingFieldByField(expected);
+        assertEquals(expected, actual);
     }
 
-//  TODO: ADD MORE TESTS!!!!
+
 }
