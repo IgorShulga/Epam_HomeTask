@@ -19,6 +19,24 @@ public class BuissnessLogicTest {
         assertEquals(expected, actual, 0.01);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testFailAmountZero() {
+        int amount = 0;
+        logic.getDiscount(amount);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testFailAmountNegative() {
+        int amount = -2000;
+        logic.getDiscount(amount);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testFailAmountIsNaN() {
+        int amount = Integer.parseInt("www");
+        logic.getDiscount(amount);
+    }
+
     @Test
     public void testGetTotalReciept() {
         Receipt actual = logic.getTotalReciept(1000);
@@ -33,5 +51,26 @@ public class BuissnessLogicTest {
         assertEquals(expected, actual);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testFailAmountZero2() {
+        int amount = 0;
+        logic.getTotalReciept(amount);
+    }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testFailAmountNegative2() {
+        int amount = -3300;
+        logic.getTotalReciept(amount);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testFailAmountIsNaN2() {
+        int amount = Integer.parseInt("w3w");
+        logic.getTotalReciept(amount);
+    }
+    @Test(expected = IllegalArgumentException.class)
+    public void testFailAmountNull() {
+        double amount = Integer.parseInt(null);
+        logic.getTotalReciept(amount);
+    }
 }
