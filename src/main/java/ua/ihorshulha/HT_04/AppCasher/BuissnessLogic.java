@@ -2,7 +2,7 @@ package ua.ihorshulha.HT_04.AppCasher;
 
 import java.util.Date;
 
-public class BuissnessLogic {
+class BuissnessLogic {
 
     double getDiscount(double amount) {
         double disc;

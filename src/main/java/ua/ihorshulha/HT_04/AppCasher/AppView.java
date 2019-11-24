@@ -2,11 +2,11 @@ package ua.ihorshulha.HT_04.AppCasher;
 
 import java.util.Scanner;
 
-public class AppView {
+class AppView {
 
     private final BuissnessLogic logic = new BuissnessLogic();
 
-    Receipt inputAmount(){
+    Receipt inputAmount() {
         double amount = getAmount();
         return logic.getTotalReciept(amount);
     }
@@ -15,7 +15,7 @@ public class AppView {
         System.out.println("Please, input total amount = ");
         Scanner scanner = new Scanner(System.in);
         String input = scanner.next();
-        if(isCorrectInteger(input)){
+        if (isCorrectInteger(input)) {
             return Integer.parseInt(input);
         }
         throw new IllegalArgumentException("Please, repeat input");
@@ -30,5 +30,4 @@ public class AppView {
         }
         return true;
     }
-
 }
