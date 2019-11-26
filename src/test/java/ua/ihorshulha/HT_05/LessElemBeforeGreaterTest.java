@@ -39,7 +39,7 @@ public class LessElemBeforeGreaterTest {
         greater.partitionLinkedListByValue(linkedList, 4);
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void testFailLisNull() {
         greater.partitionLinkedListByValue(null, 4);
     }

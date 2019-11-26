@@ -1,10 +1,10 @@
 package ua.ihorshulha.HT_05;
 
 import org.junit.Test;
+
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 import static org.junit.Assert.assertEquals;
 
@@ -51,15 +51,14 @@ public class RotateLinkedListTest {
         assertEquals(expected, actual);
     }
 
-    @Test(expected = NoSuchElementException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void testRotateEmptyList() {
         LinkedList emptyList = new LinkedList();
         rotateList.getRotateList(emptyList, 4);
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void testRotateNull() {
-        LinkedList nullList = null;
-        rotateList.getRotateList(nullList, 4);
+        rotateList.getRotateList(null, 4);
     }
 }
