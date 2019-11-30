@@ -1,4 +1,4 @@
-package ua.ihorshulha.HT_04.AppCasher;
+package ua.ihorshulha.HT_04.appCasher;
 
 import java.util.Date;
 import java.util.Objects;

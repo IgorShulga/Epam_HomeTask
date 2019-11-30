@@ -1,8 +1,8 @@
-package ua.ihorshulha.HT_04.AppCasher;
+package ua.ihorshulha.HT_04.appCasher;
 
 import java.util.Date;
 
-class BuissnessLogic {
+class BusinessLogic {
 
     double getDiscount(double amount) {
         double disc;
@@ -17,17 +17,22 @@ class BuissnessLogic {
         return disc;
     }
 
-    Receipt getTotalReciept(double amount) {
+    Receipt getTotalReceipt(double amount) {
         checkAmountIsCorrect(amount);
         Receipt receipt = new Receipt();
         Date date = new Date();
         double disc = getDiscount(amount);
+        double finalAmount = getFinalAmount(amount, disc);
 
         receipt.setTotal(amount);
         receipt.setDiscount(disc);
-        receipt.setAmountToPay(amount - (amount * (disc / 100)));
+        receipt.setAmountToPay(finalAmount);
         receipt.setDate(date);
         return receipt;
+    }
+
+    private double getFinalAmount(double amount, double disc) {
+        return amount - (amount * (disc / 100));
     }
 
     private void checkAmountIsCorrect(double amount) {

@@ -1,14 +1,14 @@
-package ua.ihorshulha.HT_04.AppCasher;
+package ua.ihorshulha.HT_04.appCasher;
 
 import java.util.Scanner;
 
 class AppView {
 
-    private final BuissnessLogic logic = new BuissnessLogic();
+    private final BusinessLogic logic = new BusinessLogic();
 
     Receipt inputAmount() {
         double amount = getAmount();
-        return logic.getTotalReciept(amount);
+        return logic.getTotalReceipt(amount);
     }
 
     private double getAmount() {
@@ -29,5 +29,9 @@ class AppView {
             return false;
         }
         return true;
+    }
+
+    public void start() {
+        System.out.println(inputAmount());
     }
 }

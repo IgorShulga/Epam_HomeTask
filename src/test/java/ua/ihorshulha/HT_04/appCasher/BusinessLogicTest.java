@@ -1,4 +1,4 @@
-package ua.ihorshulha.HT_04.AppCasher;
+package ua.ihorshulha.HT_04.appCasher;
 
 import org.junit.Test;
 
@@ -6,9 +6,9 @@ import java.util.Date;
 
 import static org.junit.Assert.assertEquals;
 
-public class BuissnessLogicTest {
+public class BusinessLogicTest {
 
-    private final BuissnessLogic logic = new BuissnessLogic();
+    private final BusinessLogic logic = new BusinessLogic();
     private final Date date = new Date();
 
     @Test
@@ -39,7 +39,7 @@ public class BuissnessLogicTest {
 
     @Test
     public void testGetTotalReciept() {
-        Receipt actual = logic.getTotalReciept(1000);
+        Receipt actual = logic.getTotalReceipt(1000);
         actual.setDate(date);
 
         Receipt expected = new Receipt();
@@ -54,23 +54,23 @@ public class BuissnessLogicTest {
     @Test(expected = IllegalArgumentException.class)
     public void testFailAmountZero2() {
         int amount = 0;
-        logic.getTotalReciept(amount);
+        logic.getTotalReceipt(amount);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testFailAmountNegative2() {
         int amount = -3300;
-        logic.getTotalReciept(amount);
+        logic.getTotalReceipt(amount);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testFailAmountIsNaN2() {
         int amount = Integer.parseInt("w3w");
-        logic.getTotalReciept(amount);
+        logic.getTotalReceipt(amount);
     }
     @Test(expected = IllegalArgumentException.class)
     public void testFailAmountNull() {
         double amount = Integer.parseInt(null);
-        logic.getTotalReciept(amount);
+        logic.getTotalReceipt(amount);
     }
 }
