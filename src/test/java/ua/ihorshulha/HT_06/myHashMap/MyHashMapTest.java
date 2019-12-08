@@ -21,7 +21,8 @@ public class MyHashMapTest {
     public void testGet() {
         MyHashMap myHashMap = new MyHashMap();
         myHashMap.put(0, 10);
-        assertEquals(10, myHashMap.get(0));
+        myHashMap.put(1, 11);
+        assertEquals(11, myHashMap.get(1));
     }
 
     @Test
