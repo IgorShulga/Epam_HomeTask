@@ -32,5 +32,6 @@ public class ActionFactory {
             default: {
                 System.out.println("You entered invalid number. Repeat please.");
             }
+        }
     }
 }
