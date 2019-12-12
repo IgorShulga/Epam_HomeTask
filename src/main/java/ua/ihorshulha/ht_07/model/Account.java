@@ -1,4 +1,4 @@
-package ua.ihorshulha.ht_07.entity;
+package ua.ihorshulha.ht_07.model;
 
 import java.util.Objects;
 

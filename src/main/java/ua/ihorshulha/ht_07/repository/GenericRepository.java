@@ -1,14 +1,16 @@
 package ua.ihorshulha.ht_07.repository;
 
-public interface GenericRepository<T, Id> {
+import java.util.List;
+
+public interface GenericRepository<T, ID> {
 
     void save(T t);
 
-    T update(Id id);
+    void update(ID id);
 
-    void remove(Id id);
+    void remove(ID id);
 
-    T getById (Id id);
+    T getById (ID id);
 
-    void getAll();
+    List<T> getAll();
 }
