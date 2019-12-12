@@ -12,9 +12,15 @@ import static ua.ihorshulha.ht_07.utils.Validate.isCorrectInteger;
 
 public class ActionFactory {
 
-    private SkillController skillController;
-    private DeveloperController developerController;
-    private AcountController acountController;
+    private final SkillController skillController;
+    private final DeveloperController developerController;
+    private final AcountController acountController;
+
+    public ActionFactory(SkillController skillController, DeveloperController developerController, AcountController acountController) {
+        this.skillController = skillController;
+        this.developerController = developerController;
+        this.acountController = acountController;
+    }
 
     public void skillFactory(BufferedReader inputKeyboard) throws IOException {
         Menu.action(inputKeyboard);

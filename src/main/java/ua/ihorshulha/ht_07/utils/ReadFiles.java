@@ -12,6 +12,7 @@ public class ReadFiles {
             readerFile
                     .lines()
                     .forEach((String note) -> {
+//                        TODO write parser
                     });
         } catch (java.io.IOException e) {
             e.printStackTrace();

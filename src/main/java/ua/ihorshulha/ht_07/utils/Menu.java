@@ -3,6 +3,7 @@ package ua.ihorshulha.ht_07.utils;
 import java.io.BufferedReader;
 
 public class Menu {
+
     public static void categories() {
         System.out.println("Choose category: ");
         System.out.println("1 - Developers");

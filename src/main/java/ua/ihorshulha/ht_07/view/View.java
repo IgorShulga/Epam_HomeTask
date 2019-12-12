@@ -14,6 +14,9 @@ public class View {
     private static final BufferedReader inputKeyboard = new BufferedReader(new InputStreamReader(System.in));
     private ActionFactory actionFactory;
 
+    public View() {
+    }
+
     public void run(){
         int numberOfMenu;
         boolean exit = true;

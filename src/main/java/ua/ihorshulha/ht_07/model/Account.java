@@ -3,6 +3,7 @@ package ua.ihorshulha.ht_07.model;
 import java.util.Objects;
 
 public class Account {
+
     private AccountStatus status;
 
     public Account(AccountStatus status) {
