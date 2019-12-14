@@ -8,7 +8,7 @@ import java.io.InputStreamReader;
 
 import static ua.ihorshulha.ht_07.utils.Validate.isCorrectInteger;
 
-public class View {
+public class MainView {
 
     private static final BufferedReader inputKeyboard = new BufferedReader(new InputStreamReader(System.in));
 

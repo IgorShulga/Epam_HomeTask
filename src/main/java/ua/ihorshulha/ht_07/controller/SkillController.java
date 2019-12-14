@@ -9,10 +9,6 @@ public class SkillController {
 
     private SkillRepositoryImpl skillRepo = new SkillRepositoryImpl();
 
-
-    public SkillController() {
-    }
-
     public List<Skill> getAllSkills() {
         return skillRepo.getAll();
     }
@@ -32,12 +28,4 @@ public class SkillController {
     public void addSkill(Skill skill) throws ApplicationException {
         skillRepo.save(skill);
     }
-
-//    public Skill createSkill(BufferedReader inputKeyboard) throws IOException {
-//        return skillRepo.createSkill(inputKeyboard);
-//    }
-
-//    public void skillController(BufferedReader inputKeyboard) throws IOException {
-//        actionFactory.skillFactory(inputKeyboard);
-//    }
 }
