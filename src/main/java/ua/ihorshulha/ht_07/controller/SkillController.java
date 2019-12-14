@@ -1,28 +1,23 @@
 package ua.ihorshulha.ht_07.controller;
 
+import ua.ihorshulha.ht_07.exception.ApplicationException;
 import ua.ihorshulha.ht_07.model.Skill;
 import ua.ihorshulha.ht_07.repository.impl.SkillRepositoryImpl;
-import ua.ihorshulha.ht_07.utils.ActionFactory;
-
-import java.io.BufferedReader;
-import java.io.IOException;
 import java.util.List;
 
 public class SkillController {
 
-    private final SkillRepositoryImpl skillRepo;
-    private final ActionFactory actionFactory;
+    private SkillRepositoryImpl skillRepo = new SkillRepositoryImpl();
 
-    public SkillController(SkillRepositoryImpl skillRepo, ActionFactory actionFactory) {
-        this.skillRepo = skillRepo;
-        this.actionFactory = actionFactory;
+
+    public SkillController() {
     }
 
-    public List getAllSkills() {
+    public List<Skill> getAllSkills() {
         return skillRepo.getAll();
     }
 
-    public Skill getSkillById(long id) {
+    public Skill getSkillById(Long id) {
         return skillRepo.getById(id);
     }
 
@@ -34,15 +29,15 @@ public class SkillController {
         skillRepo.remove(id);
     }
 
-    public void addSkill(Skill skill) {
+    public void addSkill(Skill skill) throws ApplicationException {
         skillRepo.save(skill);
     }
 
-    public Skill createSkill(BufferedReader inputKeyboard) throws IOException {
-        return skillRepo.createSkill(inputKeyboard);
-    }
+//    public Skill createSkill(BufferedReader inputKeyboard) throws IOException {
+//        return skillRepo.createSkill(inputKeyboard);
+//    }
 
-    public void skillController(BufferedReader inputKeyboard) throws IOException {
-        actionFactory.skillFactory(inputKeyboard);
-    }
+//    public void skillController(BufferedReader inputKeyboard) throws IOException {
+//        actionFactory.skillFactory(inputKeyboard);
+//    }
 }

@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 
 public class Menu {
 
-    public static void categories() {
+    public static void mainMenu() {
         System.out.println("Choose category: ");
         System.out.println("1 - Developers");
         System.out.println("2 - Skills ");

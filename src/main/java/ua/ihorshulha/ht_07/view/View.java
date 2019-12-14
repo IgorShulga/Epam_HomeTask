@@ -1,6 +1,5 @@
 package ua.ihorshulha.ht_07.view;
 
-import ua.ihorshulha.ht_07.utils.ActionFactory;
 import ua.ihorshulha.ht_07.utils.Menu;
 
 import java.io.BufferedReader;
@@ -12,24 +11,42 @@ import static ua.ihorshulha.ht_07.utils.Validate.isCorrectInteger;
 public class View {
 
     private static final BufferedReader inputKeyboard = new BufferedReader(new InputStreamReader(System.in));
-    private ActionFactory actionFactory;
 
-    public View() {
-    }
-
-    public void run(){
+    public void run() {
         int numberOfMenu;
         boolean exit = true;
         do {
-            Menu.categories();
+            Menu.mainMenu();
+            String stringTemp = null;
             try {
-                String stringTemp = inputKeyboard.readLine();
+                stringTemp = inputKeyboard.readLine();
                 if (isCorrectInteger(stringTemp)) {
                     numberOfMenu = Integer.parseInt(stringTemp);
-                    exit = actionFactory.menuFactory(numberOfMenu, inputKeyboard, exit);
+                    switch (numberOfMenu) {
+                        case 1: {
+                            new DevViewer().devView(inputKeyboard);
+                            break;
+                        }
+                        case 2: {
+                            new SkillViewer().skillView(inputKeyboard);
+                            break;
+                        }
+                        case 3: {
+                            new AccountViewer().accountView(inputKeyboard);
+                            break;
+                        }
+                        case 0: {
+                            System.out.println("Good bay");
+                            exit = false;
+                            break;
+                        }
+                        default: {
+                            System.out.println("You entered invalid number. Repeat please.");
+                        }
+                    }
                 }
             } catch (IOException e) {
-                System.out.println("Exception: " + e.getMessage());
+                e.printStackTrace();
             }
         }
         while (exit);

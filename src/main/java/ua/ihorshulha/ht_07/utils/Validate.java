@@ -11,4 +11,14 @@ public class Validate {
         }
         return true;
     }
+
+    public static boolean isCorrectLong(String str) {
+        try {
+            Long.parseLong(str);
+        } catch (NumberFormatException | NullPointerException e) {
+            System.out.println(Constants.DATA_TYPE_IS_NOT_NUMBER);
+            return false;
+        }
+        return true;
+    }
 }

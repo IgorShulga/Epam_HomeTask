@@ -6,4 +6,7 @@ public class Constants {
     public static final String SKILLS_FILE = "skills.txt";
     public static final String DEVELOPER_FILE = "developers.txt";
     public static final String ACOUNT_FILE = "accounts.txt";
+    public static final String SPLIT_OBJECTS = ";";
+    public static final String SPLIT_FIELDS = ":";
+    public static final String NAME = "Name";
 }
