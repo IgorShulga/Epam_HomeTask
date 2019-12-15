@@ -12,7 +12,7 @@ import static ua.ihorshulha.ht_07.utils.Validate.isCorrectLong;
 
 public class SkillController {
 
-    private SkillRepositoryImpl skillRepo = new SkillRepositoryImpl();
+    private final SkillRepositoryImpl skillRepo = new SkillRepositoryImpl();
 
     public void getAllSkills() {
         System.out.println("List all skills: ");
