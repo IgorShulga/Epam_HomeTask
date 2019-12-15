@@ -3,12 +3,10 @@ package ua.ihorshulha.ht_07.controller;
 import ua.ihorshulha.ht_07.exception.ApplicationException;
 import ua.ihorshulha.ht_07.model.Skill;
 import ua.ihorshulha.ht_07.repository.impl.SkillRepositoryImpl;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
-
 import static ua.ihorshulha.ht_07.utils.Constants.*;
 import static ua.ihorshulha.ht_07.utils.Validate.isCorrectLong;
 
