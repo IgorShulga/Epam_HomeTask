@@ -1,5 +1,8 @@
 package ua.ihorshulha.ht_07.view;
 
+import ua.ihorshulha.ht_07.controller.AcountController;
+import ua.ihorshulha.ht_07.controller.DeveloperController;
+import ua.ihorshulha.ht_07.controller.SkillController;
 import ua.ihorshulha.ht_07.utils.Menu;
 
 import java.io.BufferedReader;
@@ -8,9 +11,12 @@ import java.io.InputStreamReader;
 
 import static ua.ihorshulha.ht_07.utils.Validate.isCorrectInteger;
 
-public class MainView {
+public class MainViewer {
 
-    private static final BufferedReader inputKeyboard = new BufferedReader(new InputStreamReader(System.in));
+    private final BufferedReader inputKeyboard = new BufferedReader(new InputStreamReader(System.in));
+    private final SkillController skillController = new SkillController();
+    private final DeveloperController devController = new DeveloperController();
+    private final AcountController acountController = new AcountController();
 
     public void run() {
         int numberOfMenu;
@@ -24,15 +30,15 @@ public class MainView {
                     numberOfMenu = Integer.parseInt(stringTemp);
                     switch (numberOfMenu) {
                         case 1: {
-                            new DevViewer().devView(inputKeyboard);
+                            new DevViewer().view(inputKeyboard, devController);
                             break;
                         }
                         case 2: {
-                            new SkillViewer().skillView(inputKeyboard);
+                            new SkillViewer().view(inputKeyboard, skillController);
                             break;
                         }
                         case 3: {
-                            new AccountViewer().accountView(inputKeyboard);
+                            new AccountViewer().view(inputKeyboard, acountController);
                             break;
                         }
                         case 0: {
