@@ -2,6 +2,7 @@ package ua.ihorshulha.ht_07.view;
 
 import ua.ihorshulha.ht_07.controller.SkillController;
 import ua.ihorshulha.ht_07.model.Skill;
+import ua.ihorshulha.ht_07.utils.InputFromKeyboard;
 import ua.ihorshulha.ht_07.utils.Menu;
 
 import java.io.BufferedReader;
@@ -12,14 +13,14 @@ import static ua.ihorshulha.ht_07.utils.Validate.isCorrectInteger;
 
 public class SkillViewer {
 
-    void view(BufferedReader inputKeyboard, SkillController controller) {
+    void view( SkillController controller) {
         int num;
         boolean exit = true;
         do {
-            Menu.action(inputKeyboard);
+            Menu.action();
             String input = null;
             try {
-                input = inputKeyboard.readLine();
+                input = InputFromKeyboard.input();
                 if (isCorrectInteger(input)) {
                     num = Integer.parseInt(input);
                     switch (num) {
@@ -29,20 +30,24 @@ public class SkillViewer {
                             break;
                         }
                         case 2: {
-                            Skill skillById = controller.getSkillById(inputKeyboard);
+                            String inputId = InputFromKeyboard.input();
+                            Skill skillById = controller.getSkillById(inputId);
                             printOneSkill(skillById);
                             break;
                         }
                         case 3: {
-                            controller.addSkill(inputKeyboard);
+                            String inputSkill = InputFromKeyboard.input();
+                            controller.addSkill(inputSkill);
                             break;
                         }
                         case 4: {
-                            controller.updateSkillById(inputKeyboard);
+                            String inputId = InputFromKeyboard.input();
+                            controller.updateSkillById(inputId);
                             break;
                         }
                         case 5: {
-                            controller.removeSkillById(inputKeyboard);
+                            String inputId = InputFromKeyboard.input();
+                            controller.removeSkillById(inputId);
                             break;
                         }
                         case 0: {

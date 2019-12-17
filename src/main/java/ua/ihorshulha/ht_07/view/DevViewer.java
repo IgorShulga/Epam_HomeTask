@@ -12,7 +12,7 @@ import static ua.ihorshulha.ht_07.utils.Validate.isCorrectInteger;
 
 public class DevViewer{
 
-    void view(BufferedReader inputKeyboard, DeveloperController controller) {
+    void view(DeveloperController controller) {
         int num;
         boolean exit = true;
         do {

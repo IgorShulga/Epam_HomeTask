@@ -1,7 +1,5 @@
 package ua.ihorshulha.ht_07.utils;
 
-import java.io.BufferedReader;
-
 public class Menu {
 
     public static void mainMenu() {
@@ -12,7 +10,7 @@ public class Menu {
         System.out.println("0 - Exit.;");
     }
 
-    public static void action(BufferedReader inputKeyboard) {
+    public static void action() {
         System.out.println("Choose action: ");
         System.out.println("1 - Get all ");
         System.out.println("2 - Get one by ID ");

@@ -3,7 +3,6 @@ package ua.ihorshulha.ht_07.controller;
 import ua.ihorshulha.ht_07.model.Account;
 import ua.ihorshulha.ht_07.repository.implIO.AccountRepositoryJavaIOImpl;
 
-import java.io.BufferedReader;
 import java.util.List;
 
 public class AcountController {
@@ -17,16 +16,16 @@ private final AccountRepositoryJavaIOImpl accountRepo = new AccountRepositoryJav
         all.stream().forEach(System.out::println);
     }
 
-    public void getAccountById(BufferedReader inputKeyboard) {
+    public void getAccountById(String input) {
     }
 
-    public void addAccount(BufferedReader inputKeyboard) {
+    public void addAccount(String input) {
     }
 
-    public void updateAccountById(BufferedReader inputKeyboard) {
+    public void updateAccountById(String input) {
     }
 
-    public void removeAccountById(BufferedReader inputKeyboard) {
+    public void removeAccountById(String input) {
 
     }
 }
