@@ -1,4 +1,4 @@
-package ua.ihorshulha.ht_07.repository.impl;
+package ua.ihorshulha.ht_07.repository.implIO;
 
 import ua.ihorshulha.ht_07.exception.ApplicationException;
 import ua.ihorshulha.ht_07.model.Skill;
@@ -15,26 +15,28 @@ import java.util.stream.Stream;
 
 import static ua.ihorshulha.ht_07.utils.Constants.*;
 
-public class SkillRepositoryImpl implements SkillRepository {
+public class SkillRepositoryJavaIOImpl implements SkillRepository {
 
     private final BufferedReader inputKeyboard = new BufferedReader(new InputStreamReader(System.in));
     private final ReadAndWriteFile workFile = new ReadAndWriteFile();
 
     @Override
-    public void save(Skill skill) throws ApplicationException {
+    public Skill save(Skill skill) throws ApplicationException {
         List<String> dateFile = workFile.readFromFile(SET_PATH + SKILLS_FILE);
-        Stream<String> stringStream = dateFile
-                .stream()
+        Stream<String> stringStream = dateFile.stream()
                 .map(s -> s.split(SPLIT_FIELDS)[1].trim());
-
         if (stringStream.anyMatch(str -> str.equalsIgnoreCase(skill.getName()))) {
             throw new ApplicationException(ALREADY_EXIST);
         } else {
             skill.setId((long) (dateFile.size() + 1));
-            dateFile.add(skill.getId() + SPLIT_FIELDS + skill.getName());
-            String string = String.join(SPLIT_OBJECTS, dateFile);
-            workFile.writeToFile(SET_PATH + SKILLS_FILE, string);
+            workFile.writeToFile(SET_PATH + SKILLS_FILE, skillToString(dateFile, skill));
         }
+        return skill;
+    }
+
+    private String skillToString(List<String> dateFile, Skill skill) {
+        dateFile.add(skill.getId() + SPLIT_FIELDS + skill.getName());
+        return String.join(SPLIT_OBJECTS, dateFile);
     }
 
     @Override
@@ -76,7 +78,7 @@ public class SkillRepositoryImpl implements SkillRepository {
         for (String s : dateFile) {
             long idFromFile = Long.parseLong(s.split(SPLIT_FIELDS)[0].trim());
             if (idFromFile == id) {
-                skill.setName(s.split(SPLIT_FIELDS)[0].trim());
+                skill.setId(Long.parseLong(s.split(SPLIT_FIELDS)[0].trim()));
                 skill.setName(s.split(SPLIT_FIELDS)[1].trim());
             }
         }

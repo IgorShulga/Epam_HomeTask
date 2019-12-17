@@ -2,22 +2,22 @@ package ua.ihorshulha.ht_07.controller;
 
 import ua.ihorshulha.ht_07.exception.ApplicationException;
 import ua.ihorshulha.ht_07.model.Skill;
-import ua.ihorshulha.ht_07.repository.impl.SkillRepositoryImpl;
+import ua.ihorshulha.ht_07.repository.implIO.SkillRepositoryJavaIOImpl;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
+
 import static ua.ihorshulha.ht_07.utils.Constants.*;
 import static ua.ihorshulha.ht_07.utils.Validate.isCorrectLong;
 
 public class SkillController {
 
-    private final SkillRepositoryImpl skillRepo = new SkillRepositoryImpl();
+    private final SkillRepositoryJavaIOImpl skillRepo = new SkillRepositoryJavaIOImpl();
 
-    public void getAllSkills() {
-        System.out.println("List all skills: ");
-        List<Skill> all = skillRepo.getAll();
-        all.stream().forEach(System.out::println);
+    public List<Skill> getAllSkills() {
+        return skillRepo.getAll();
     }
 
     public Skill getSkillById(BufferedReader inputKeyboard) {
@@ -50,7 +50,7 @@ public class SkillController {
     }
 
     public void addSkill(BufferedReader inputKeyboard) {
-        String line = new String();
+        String line;
         System.out.println(INPUT_NAME);
         try {
             line = inputKeyboard.readLine();

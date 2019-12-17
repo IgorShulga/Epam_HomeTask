@@ -1,4 +1,4 @@
-package ua.ihorshulha.ht_07.repository.impl;
+package ua.ihorshulha.ht_07.repository.implIO;
 
 import ua.ihorshulha.ht_07.exception.ApplicationException;
 import ua.ihorshulha.ht_07.model.Account;
@@ -7,10 +7,10 @@ import ua.ihorshulha.ht_07.repository.AccountRepository;
 import java.io.IOException;
 import java.util.List;
 
-public class AccountRepositoryImpl implements AccountRepository {
+public class AccountRepositoryJavaIOImpl implements AccountRepository {
     @Override
-    public void save(Account account) throws ApplicationException {
-
+    public Account save(Account account) throws ApplicationException {
+        return null;
     }
 
     @Override

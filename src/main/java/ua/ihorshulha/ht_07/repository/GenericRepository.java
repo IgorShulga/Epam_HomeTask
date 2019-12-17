@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface GenericRepository<ID, T> {
 
-    void save(T t) throws ApplicationException;
+    T save(T t) throws ApplicationException;
 
     void update(ID id) throws IOException;
 

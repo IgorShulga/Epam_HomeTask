@@ -1,4 +1,4 @@
-package ua.ihorshulha.ht_07.repository.impl;
+package ua.ihorshulha.ht_07.repository.implIO;
 
 import ua.ihorshulha.ht_07.exception.ApplicationException;
 import ua.ihorshulha.ht_07.model.Developer;
@@ -7,10 +7,10 @@ import ua.ihorshulha.ht_07.repository.DeveloperRepository;
 import java.io.IOException;
 import java.util.List;
 
-public class DeveloperRepositoryImpl implements DeveloperRepository {
+public class DeveloperRepositoryJavaIOImpl implements DeveloperRepository {
     @Override
-    public void save(Developer developer) throws ApplicationException {
-
+    public Developer save(Developer developer) throws ApplicationException {
+        return null;
     }
 
     @Override

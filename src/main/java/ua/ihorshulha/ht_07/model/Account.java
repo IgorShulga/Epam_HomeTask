@@ -4,10 +4,23 @@ import java.util.Objects;
 
 public class Account {
 
+    private Long id;
     private AccountStatus status;
 
-    public Account(AccountStatus status) {
+    public Account(Long id, AccountStatus status) {
+        this.id = id;
         this.status = status;
+    }
+
+    public Account() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public AccountStatus getStatus() {
@@ -23,18 +36,20 @@ public class Account {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Account account = (Account) o;
-        return status == account.status;
+        return Objects.equals(id, account.id) &&
+                status == account.status;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(status);
+        return Objects.hash(id, status);
     }
 
     @Override
     public String toString() {
         return "Account{" +
-                "status=" + status +
+                "id=" + id +
+                ", status=" + status +
                 '}';
     }
 }

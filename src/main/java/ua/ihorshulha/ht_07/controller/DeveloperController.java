@@ -1,14 +1,14 @@
 package ua.ihorshulha.ht_07.controller;
 
 import ua.ihorshulha.ht_07.model.Developer;
-import ua.ihorshulha.ht_07.repository.impl.DeveloperRepositoryImpl;
+import ua.ihorshulha.ht_07.repository.implIO.DeveloperRepositoryJavaIOImpl;
 
 import java.io.BufferedReader;
 import java.util.List;
 
 public class DeveloperController {
 
-    private final DeveloperRepositoryImpl developerRepo = new DeveloperRepositoryImpl();
+    private final DeveloperRepositoryJavaIOImpl developerRepo = new DeveloperRepositoryJavaIOImpl();
 
     public void getAllDevelopers() {
         System.out.println("List of developers: ");
