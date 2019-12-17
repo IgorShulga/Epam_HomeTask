@@ -31,6 +31,10 @@ public class Account {
         this.status = status;
     }
 
+    public enum AccountStatus {
+        ACTIVE, BANNED, DELETED;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

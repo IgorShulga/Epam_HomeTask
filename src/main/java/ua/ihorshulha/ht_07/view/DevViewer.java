@@ -1,10 +1,12 @@
 package ua.ihorshulha.ht_07.view;
 
 import ua.ihorshulha.ht_07.controller.DeveloperController;
+import ua.ihorshulha.ht_07.model.Developer;
 import ua.ihorshulha.ht_07.utils.Menu;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.List;
 
 import static ua.ihorshulha.ht_07.utils.Validate.isCorrectInteger;
 
@@ -22,11 +24,13 @@ public class DevViewer{
                     num = Integer.parseInt(input);
                     switch (num) {
                         case 1: {
-                            controller.getAllDevelopers();
+                            List<Developer> allDevelopers = controller.getAllDevelopers();
+                            printAllDevelopers(allDevelopers);
                             break;
                         }
                         case 2: {
-                            controller.getDeveloperById(inputKeyboard);
+                            Developer dev = controller.getDeveloperById(inputKeyboard);
+                            printOneDeveloper(dev);
                             break;
                         }
                         case 3: {
@@ -54,5 +58,14 @@ public class DevViewer{
                 e.printStackTrace();
             }
         } while (exit);
+    }
+
+    private void printOneDeveloper(Developer dev) {
+        System.out.println(dev.toString());
+    }
+
+    private void printAllDevelopers(List<Developer> allDevelopers) {
+        System.out.println("List of developers: ");
+        allDevelopers.stream().forEach(System.out::println);
     }
 }

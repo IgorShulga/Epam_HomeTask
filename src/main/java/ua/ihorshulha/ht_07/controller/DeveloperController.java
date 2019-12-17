@@ -10,14 +10,12 @@ public class DeveloperController {
 
     private final DeveloperRepositoryJavaIOImpl developerRepo = new DeveloperRepositoryJavaIOImpl();
 
-    public void getAllDevelopers() {
-        System.out.println("List of developers: ");
-        List<Developer> all = developerRepo.getAll();
-        all.stream().forEach(System.out::println);
+    public List<Developer> getAllDevelopers() {
+        return developerRepo.getAll();
     }
 
-    public void getDeveloperById(BufferedReader inputKeyboard) {
-
+    public Developer getDeveloperById(BufferedReader inputKeyboard) {
+return null;
     }
 
     public void addDeveloper(BufferedReader inputKeyboard) {

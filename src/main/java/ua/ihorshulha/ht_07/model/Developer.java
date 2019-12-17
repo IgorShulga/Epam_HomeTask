@@ -1,6 +1,7 @@
 package ua.ihorshulha.ht_07.model;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 import java.util.Set;
 
@@ -10,17 +11,19 @@ public class Developer {
     private String name;
     private String surname;
     private String phone;
+    private Account.AccountStatus account;
     private Set<Skill> skills;
     private int age;
     private boolean married;
     private LocalDateTime createDate;
 
-    public Developer(Long id, String name, String surname, String phone, Set<Skill> skills,
-                     int age, boolean married, LocalDateTime createDate) {
+    public Developer(Long id, String name, String surname, String phone, Account.AccountStatus account,
+                     Set<Skill> skills, int age, boolean married, LocalDateTime createDate) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.phone = phone;
+        this.account = account;
         this.skills = skills;
         this.age = age;
         this.married = married;
@@ -62,6 +65,14 @@ public class Developer {
         this.phone = phone;
     }
 
+    public Account.AccountStatus getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account.AccountStatus account) {
+        this.account = account;
+    }
+
     public Set<Skill> getSkills() {
         return skills;
     }
@@ -99,15 +110,14 @@ public class Developer {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Developer developer = (Developer) o;
-        return Objects.equals(id, developer.id) &&
-                Objects.equals(name, developer.name) &&
+        return Objects.equals(name, developer.name) &&
                 Objects.equals(surname, developer.surname) &&
                 Objects.equals(phone, developer.phone);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, surname, phone);
+        return Objects.hash(name, surname, phone);
     }
 
     @Override
@@ -117,10 +127,11 @@ public class Developer {
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", phone='" + phone + '\'' +
+                ", account=" + account +
                 ", skills=" + skills +
                 ", age=" + age +
                 ", married=" + married +
-                ", createDate=" + createDate +
+                ", createDate="  + createDate.format(DateTimeFormatter.ofPattern("d MMMM uuuu; HH:mm:ss")) +
                 '}';
     }
 }

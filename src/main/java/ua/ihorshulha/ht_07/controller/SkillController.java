@@ -8,7 +8,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
-
 import static ua.ihorshulha.ht_07.utils.Constants.*;
 import static ua.ihorshulha.ht_07.utils.Validate.isCorrectLong;
 
