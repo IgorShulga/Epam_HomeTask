@@ -11,13 +11,13 @@ public class Developer {
     private String name;
     private String surname;
     private String phone;
-    private Account.AccountStatus account;
+    private Account account;
     private Set<Skill> skills;
     private int age;
     private boolean married;
     private LocalDateTime createDate;
 
-    public Developer(Long id, String name, String surname, String phone, Account.AccountStatus account,
+    public Developer(Long id, String name, String surname, String phone, Account account,
                      Set<Skill> skills, int age, boolean married, LocalDateTime createDate) {
         this.id = id;
         this.name = name;
@@ -65,11 +65,11 @@ public class Developer {
         this.phone = phone;
     }
 
-    public Account.AccountStatus getAccount() {
+    public Account getAccount() {
         return account;
     }
 
-    public void setAccount(Account.AccountStatus account) {
+    public void setAccount(Account account) {
         this.account = account;
     }
 

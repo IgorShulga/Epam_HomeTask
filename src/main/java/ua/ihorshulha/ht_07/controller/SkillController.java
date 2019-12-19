@@ -2,30 +2,32 @@ package ua.ihorshulha.ht_07.controller;
 
 import ua.ihorshulha.ht_07.exception.ApplicationException;
 import ua.ihorshulha.ht_07.model.Skill;
-import ua.ihorshulha.ht_07.repository.implIO.SkillRepositoryJavaIOImpl;
+import ua.ihorshulha.ht_07.repository.impl.SkillRepositoryJavaIOImpl;
+import ua.ihorshulha.ht_07.utils.InputFromKeyboard;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 
-import static ua.ihorshulha.ht_07.utils.Constants.*;
-import static ua.ihorshulha.ht_07.utils.Validate.isCorrectLong;
+import static ua.ihorshulha.ht_07.utils.Constants.INPUT_NAME;
+import static ua.ihorshulha.ht_07.utils.Constants.MUST_NOT_BE_EMPTY;
 
 public class SkillController {
 
     private final SkillRepositoryJavaIOImpl skillRepo = new SkillRepositoryJavaIOImpl();
+    private InputFromKeyboard inputFromKeyboard = new InputFromKeyboard();
 
     public List<Skill> getAllSkills() {
         return skillRepo.getAll();
     }
 
     public Skill getSkillById(String input) {
-        long id = isCorrectInput(input);
+        long id = inputFromKeyboard.isCorrectInput(input);
         return skillRepo.getById(id);
     }
 
     public void updateSkillById(String inputId) {
-        long id = isCorrectInput(inputId);
+        long id = inputFromKeyboard.isCorrectInput(inputId);
         try {
             if (skillRepo.isExistSkillById(id)) {
                 skillRepo.update(id);
@@ -36,7 +38,7 @@ public class SkillController {
     }
 
     public void removeSkillById(String inputId) {
-        long id = isCorrectInput(inputId);
+        long id = inputFromKeyboard.isCorrectInput(inputId);
         try {
             if (skillRepo.isExistSkillById(id)) {
                 skillRepo.remove(id);
@@ -61,17 +63,5 @@ public class SkillController {
         } catch (ApplicationException e) {
             System.out.println("Repeat again...");
         }
-    }
-
-    private long isCorrectInput(String input) {
-        boolean correct;
-        System.out.println(INPUT_ID);
-        long id = -1;
-        String str = null;
-        do {
-            str = input;
-            correct = isCorrectLong(str);
-        } while (!correct);
-        return Long.parseLong(str);
     }
 }

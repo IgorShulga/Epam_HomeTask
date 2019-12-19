@@ -1,7 +1,7 @@
 package ua.ihorshulha.ht_07.controller;
 
 import ua.ihorshulha.ht_07.model.Account;
-import ua.ihorshulha.ht_07.repository.implIO.AccountRepositoryJavaIOImpl;
+import ua.ihorshulha.ht_07.repository.impl.AccountRepositoryJavaIOImpl;
 
 import java.util.List;
 

@@ -1,10 +1,10 @@
 package ua.ihorshulha.ht_07.utils;
 
 import ua.ihorshulha.ht_07.exception.ApplicationException;
-import ua.ihorshulha.ht_07.model.Account;
 import ua.ihorshulha.ht_07.model.Developer;
 import ua.ihorshulha.ht_07.model.Skill;
-import ua.ihorshulha.ht_07.repository.implIO.SkillRepositoryJavaIOImpl;
+import ua.ihorshulha.ht_07.repository.impl.AccountRepositoryJavaIOImpl;
+import ua.ihorshulha.ht_07.repository.impl.SkillRepositoryJavaIOImpl;
 
 import java.io.*;
 import java.time.LocalDateTime;
@@ -17,6 +17,9 @@ import java.util.Set;
 import static ua.ihorshulha.ht_07.utils.Constants.SPLIT_FIELDS;
 
 public class ReadAndWriteFile {
+
+    private SkillRepositoryJavaIOImpl skillRepo = new SkillRepositoryJavaIOImpl();
+    private AccountRepositoryJavaIOImpl accountRepo = new AccountRepositoryJavaIOImpl();
 
     public List<String> readFromFile(String fileName) {
         List list = new ArrayList();
@@ -36,7 +39,6 @@ public class ReadAndWriteFile {
     }
 
     public List<Developer> readFromFileToSetDeveloper(String fileName) {
-        SkillRepositoryJavaIOImpl skillRepo = new SkillRepositoryJavaIOImpl();
         isExistFileForReadAndWrite(fileName);
         List<Developer> listDev = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
@@ -47,24 +49,31 @@ public class ReadAndWriteFile {
                                 for (String value : arrayValue) {
                                     if (value.contains("id")) {
                                         dev.setId(Long.parseLong(value.split(SPLIT_FIELDS)[1].trim()));
+                                        continue;
                                     }
                                     if (value.contains("name")) {
                                         dev.setName(value.split(SPLIT_FIELDS)[1].trim());
+                                        continue;
                                     }
                                     if (value.contains("surname")) {
                                         dev.setName(value.split(SPLIT_FIELDS)[1].trim());
+                                        continue;
                                     }
                                     if (value.contains("phone")) {
                                         dev.setPhone(value.split(SPLIT_FIELDS)[1].trim());
+                                        continue;
                                     }
                                     if (value.contains("age")) {
                                         dev.setAge(Integer.parseInt(value.split(SPLIT_FIELDS)[1].trim()));
+                                        continue;
                                     }
                                     if (value.contains("married")) {
                                         dev.setMarried(Boolean.parseBoolean(value.split(SPLIT_FIELDS)[1].trim()));
+                                        continue;
                                     }
                                     if (value.contains("create date")) {
                                         dev.setCreateDate(LocalDateTime.parse(value.substring(value.indexOf(SPLIT_FIELDS) + 1).trim(), DateTimeFormatter.ISO_DATE_TIME));
+                                        continue;
                                     }
                                     if (value.contains("skills")) {
                                         Set<Skill> skills = new HashSet<>();
@@ -73,10 +82,12 @@ public class ReadAndWriteFile {
                                             skills.add(skillRepo.getById(Long.parseLong(s)));
                                         }
                                         dev.setSkills(skills);
+                                        continue;
                                     }
                                     if (value.contains("account status")) {
-                                        String acc = value.split(SPLIT_FIELDS)[1].trim();
-                                        dev.setAccount(Account.AccountStatus.valueOf(acc));
+                                        long accountId = Long.parseLong(value.split(SPLIT_FIELDS)[1].trim());
+                                        dev.setAccount(accountRepo.getById(accountId));
+                                        continue;
                                     }
                                 }
                                 listDev.add(dev);

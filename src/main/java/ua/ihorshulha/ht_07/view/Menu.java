@@ -1,4 +1,4 @@
-package ua.ihorshulha.ht_07.utils;
+package ua.ihorshulha.ht_07.view;
 
 public class Menu {
 

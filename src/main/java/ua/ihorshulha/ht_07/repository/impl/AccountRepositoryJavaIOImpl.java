@@ -1,4 +1,4 @@
-package ua.ihorshulha.ht_07.repository.implIO;
+package ua.ihorshulha.ht_07.repository.impl;
 
 import ua.ihorshulha.ht_07.exception.ApplicationException;
 import ua.ihorshulha.ht_07.model.Account;

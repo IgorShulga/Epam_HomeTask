@@ -1,4 +1,4 @@
-package ua.ihorshulha.ht_07.repository.implIO;
+package ua.ihorshulha.ht_07.repository.impl;
 
 import ua.ihorshulha.ht_07.exception.ApplicationException;
 import ua.ihorshulha.ht_07.model.Developer;
@@ -12,6 +12,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static ua.ihorshulha.ht_07.utils.Constants.*;
 
@@ -74,13 +76,20 @@ public class DeveloperRepositoryJavaIOImpl implements DeveloperRepository {
     }
 
     @Override
-    public Developer getById(Long aLong) {
-        return null;
+    public Developer getById(Long id) {
+        List<Developer> developers = workFile.readFromFileToSetDeveloper(SET_PATH + DEVELOPER_FILE);
+        return developers.stream().filter(dev -> dev.getId() == id).collect(Collectors.toList()).get(0);
     }
 
     @Override
     public List<Developer> getAll() {
-        return workFile.readFromFileToSetDeveloper(DEVELOPER_FILE);
-//        workFile.readFromFile(DEVELOPER_FILE);
+        return workFile.readFromFileToSetDeveloper(SET_PATH+DEVELOPER_FILE);
+    }
+
+    public boolean isExistDevById(long id) {
+        List<String> dateFile = workFile.readFromFile(SET_PATH + DEVELOPER_FILE);
+        Stream<Long> longIdStream = dateFile.stream()
+                .map(s -> Long.parseLong(s.split(SPLIT_FIELDS)[0].trim()));
+        return longIdStream.anyMatch(str -> str.equals(id));
     }
 }
