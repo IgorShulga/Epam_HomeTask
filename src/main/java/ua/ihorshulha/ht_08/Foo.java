@@ -4,46 +4,46 @@ import java.io.PrintStream;
 import java.util.concurrent.Semaphore;
 
 public class Foo {
-    private Semaphore secondSemaphore = new Semaphore(1),
-            thirdSemaphore = new Semaphore(1);
-    private PrintStream printStream = System.out;
+    private Semaphore semaphoreTwo = new Semaphore(1);
+    private Semaphore semaphoreThree = new Semaphore(1);
+    private PrintStream print = System.out;
 
     public Foo() {
         try {
-            secondSemaphore.acquire();
-            thirdSemaphore.acquire();
+            semaphoreTwo.acquire();
+            semaphoreThree.acquire();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
-    public void setPrintStream(PrintStream printStream) {
-        this.printStream = printStream;
+    public void setPrint(PrintStream print) {
+        this.print = print;
     }
 
     public void first() {
-        printStream.print("first ");
-        secondSemaphore.release();
+        print.print("first ");
+        semaphoreTwo.release();
     }
 
     public void second() {
         try {
-            secondSemaphore.acquire();
+            semaphoreTwo.acquire();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        printStream.print("second ");
-        secondSemaphore.release();
-        thirdSemaphore.release();
+        print.print("second ");
+        semaphoreTwo.release();
+        semaphoreThree.release();
     }
 
     public void third() {
         try {
-            thirdSemaphore.acquire();
+            semaphoreThree.acquire();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        printStream.print("third");
-        thirdSemaphore.release();
+        print.print("third ");
+        semaphoreThree.release();
     }
 }

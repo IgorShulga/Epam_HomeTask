@@ -14,7 +14,7 @@ public class FooTest {
         Foo foo = new Foo();
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream(256);
         PrintStream printStream = new PrintStream(outputStream);
-        foo.setPrintStream(printStream);
+        foo.setPrint(printStream);
 
         List<Thread> threads = new ArrayList<>();
         threads.add(new Thread(foo::first));
@@ -33,6 +33,6 @@ public class FooTest {
             }
         }
 
-        assertEquals("first second third", outputStream.toString());
+        assertEquals("first second third ", outputStream.toString());
     }
 }

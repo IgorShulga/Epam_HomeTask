@@ -5,108 +5,101 @@ import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
-class FizzBuzz {
+public class FizzBuzz {
     private final int n;
-    private PrintStream printStream = System.out;
+    private PrintStream print = System.out;
     private final AtomicInteger counter = new AtomicInteger(0);
     private final AtomicBoolean condition = new AtomicBoolean(false);
 
-    private Semaphore fizzSemaphore = new Semaphore(0),
-            buzzSemaphore = new Semaphore(0),
-            fizzBuzzSemaphore = new Semaphore(0),
-            numberSemaphore = new Semaphore(1);
+    private Semaphore fizzSem = new Semaphore(0);
+    private Semaphore buzzSem = new Semaphore(0);
+    private Semaphore fizzBuzzSem = new Semaphore(0);
+    private Semaphore numSem = new Semaphore(1);
 
-    public FizzBuzz(int n) {
-        if (n < 1) {
-            throw new IllegalArgumentException();
-        }
+    FizzBuzz(int n) {
         this.n = n;
     }
 
-    public void setPrintStream(PrintStream printStream) {
-        this.printStream = printStream;
+    void setPrint(PrintStream print) {
+        this.print = print;
     }
 
     private void act() {
         if (counter.getAndIncrement() == n) {
             condition.set(true);
-            fizzSemaphore.release();
-            buzzSemaphore.release();
-            fizzBuzzSemaphore.release();
-            numberSemaphore.release();
-        }
-        else {
+            fizzSem.release();
+            buzzSem.release();
+            fizzBuzzSem.release();
+            numSem.release();
+        } else {
             if (counter.get() % 5 == 0 && counter.get() % 3 == 0) {
-                fizzBuzzSemaphore.release();
-            }
-            else if (counter.get() % 5 == 0) {
-                buzzSemaphore.release();
-            }
-            else if (counter.get() % 3 == 0) {
-                fizzSemaphore.release();
-            }
-            else {
-                numberSemaphore.release();
+                fizzBuzzSem.release();
+            } else if (counter.get() % 5 == 0) {
+                buzzSem.release();
+            } else if (counter.get() % 3 == 0) {
+                fizzSem.release();
+            } else {
+                numSem.release();
             }
         }
     }
 
-    public void fizz() {
+    void fizz() {
         while (true) {
             try {
-                fizzSemaphore.acquire();
+                fizzSem.acquire();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             if (condition.get()) {
                 break;
             }
-            printStream.print("fizz ");
+            print.print("fizz ");
             act();
         }
     }
 
-    public void buzz() {
+    void buzz() {
         while (true) {
             try {
-                buzzSemaphore.acquire();
+                buzzSem.acquire();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             if (condition.get()) {
                 break;
             }
-            printStream.print("buzz ");
+            print.print("buzz ");
             act();
         }
     }
 
-    public void fizzBuzz() {
+    void fizzBuzz() {
         while (true) {
             try {
-                fizzBuzzSemaphore.acquire();
+                fizzBuzzSem.acquire();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             if (condition.get()) {
                 break;
             }
-            printStream.print("fizzBuzz ");
+            print.print("FizzBuzz ");
             act();
         }
     }
 
-    public void numeric() {
+    void numeric() {
         while (true) {
             try {
-                numberSemaphore.acquire();
+                numSem.acquire();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             if (condition.get()) {
                 break;
             }
-            printStream.print(counter.get() + " ");
+            print.print(counter.get() + " ");
             act();
         }
     }
