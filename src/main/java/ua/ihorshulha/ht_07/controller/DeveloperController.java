@@ -45,7 +45,7 @@ public class DeveloperController {
             System.out.println("Input phone - ");
             newDev.setPhone(inputFromKeyboard.input());
 
-            System.out.println("Input account status - ");
+            System.out.println("Input number account status: \n 1-Active, 2-Banned, 3-Deleted \n ->");
             newDev.setAccount(new Account(Long.parseLong(inputFromKeyboard.input())));
 
             System.out.println("Input skills - ");

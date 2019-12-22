@@ -22,25 +22,23 @@ public class DeveloperRepositoryJavaIOImpl implements DeveloperRepository {
     private final BufferedReader inputKeyboard = new BufferedReader(new InputStreamReader(System.in));
     private final ReadAndWriteFile workFile = new ReadAndWriteFile();
 
-    private Set<Developer> storage = new TreeSet<Developer>(Comparator.comparing(Developer::getName)
+    private Set<Developer> setDevs = new TreeSet<>(Comparator
+            .comparing(Developer::getName)
             .thenComparing(Developer::getSurname)
             .thenComparing(Developer::getPhone));
 
-    private static long generator = 0;
-
     @Override
     public Developer save(Developer developer) throws ApplicationException {
-//        workFile.readFromFile()
+        List<Developer> devs = workFile.readFromFileToSetDeveloper(DEVELOPER_FILE);
+        devs.forEach(d -> setDevs.add(d));
         searchSameContact(developer);
-        generator++;
-        developer.setId(generator);
-        storage.add(developer);
-
+        developer.setId((long) (devs.size() + 1));
+        setDevs.add(developer);
         return developer;
     }
 
     private void searchSameContact(Developer developer) {
-        if (storage
+        if (setDevs
                 .stream()
                 .anyMatch(developer::equals)) {
             try {
@@ -59,7 +57,7 @@ public class DeveloperRepositoryJavaIOImpl implements DeveloperRepository {
     @Override
     public void remove(Long devId) {
         if (isThereExistDeveloper(devId)) {
-            storage.removeIf(contact -> contact.getId() == devId);
+            setDevs.removeIf(contact -> contact.getId() == devId);
         } else {
             try {
                 throw new ApplicationException(ID_DOES_NOT_EXIST);
@@ -70,20 +68,20 @@ public class DeveloperRepositoryJavaIOImpl implements DeveloperRepository {
     }
 
     private boolean isThereExistDeveloper(Long devId) {
-        return storage
+        return setDevs
                 .stream()
                 .anyMatch(contact -> contact.getId() == devId);
     }
 
     @Override
     public Developer getById(Long id) {
-        List<Developer> developers = workFile.readFromFileToSetDeveloper(SET_PATH + DEVELOPER_FILE);
+        List<Developer> developers = workFile.readFromFileToSetDeveloper(DEVELOPER_FILE);
         return developers.stream().filter(dev -> dev.getId() == id).collect(Collectors.toList()).get(0);
     }
 
     @Override
     public List<Developer> getAll() {
-        return workFile.readFromFileToSetDeveloper(SET_PATH+DEVELOPER_FILE);
+        return workFile.readFromFileToSetDeveloper(DEVELOPER_FILE);
     }
 
     public boolean isExistDevById(long id) {
