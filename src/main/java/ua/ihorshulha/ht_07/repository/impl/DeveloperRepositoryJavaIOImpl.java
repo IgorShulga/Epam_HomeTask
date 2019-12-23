@@ -8,10 +8,7 @@ import ua.ihorshulha.ht_07.utils.ReadAndWriteFile;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -22,19 +19,38 @@ public class DeveloperRepositoryJavaIOImpl implements DeveloperRepository {
     private final BufferedReader inputKeyboard = new BufferedReader(new InputStreamReader(System.in));
     private final ReadAndWriteFile workFile = new ReadAndWriteFile();
 
-    private Set<Developer> setDevs = new TreeSet<>(Comparator
-            .comparing(Developer::getName)
-            .thenComparing(Developer::getSurname)
+    private static Set<Developer> setDevs = new TreeSet<>(Comparator
+            .comparing(Developer::getFirstName)
+            .thenComparing(Developer::getSecondName)
             .thenComparing(Developer::getPhone));
 
     @Override
     public Developer save(Developer developer) throws ApplicationException {
         List<Developer> devs = workFile.readFromFileToSetDeveloper(DEVELOPER_FILE);
-        devs.forEach(d -> setDevs.add(d));
+        setDevs.addAll(devs);
         searchSameContact(developer);
         developer.setId((long) (devs.size() + 1));
         setDevs.add(developer);
+        String string = devToString(setDevs);
+        workFile.writeToFile(DEVELOPER_FILE, string);
         return developer;
+    }
+
+    private String devToString(Set<Developer> setDevs) {
+        List<String> listStringsDev = new ArrayList<>();
+        for (Developer dev : setDevs) {
+            String str = "id" + SPLIT_FIELDS + dev.getId() + SPLIT_OBJECTS +
+                    "firstName" + SPLIT_FIELDS + dev.getFirstName() + SPLIT_OBJECTS +
+                    "secondName" + SPLIT_FIELDS + dev.getSecondName() + SPLIT_OBJECTS +
+                    "phone" + SPLIT_FIELDS + dev.getPhone() + SPLIT_OBJECTS +
+                    "account" + SPLIT_FIELDS + dev.getAccount() + SPLIT_OBJECTS +
+                    "skills" + SPLIT_FIELDS + dev.getSkills() + SPLIT_OBJECTS +
+                    "age" + SPLIT_FIELDS + dev.getAge() + SPLIT_OBJECTS +
+                    "married" + SPLIT_FIELDS + dev.isMarried() + SPLIT_OBJECTS +
+                    "create date" + SPLIT_FIELDS + dev.getCreateDate() + SPLIT_OBJECTS;
+            listStringsDev.add(str);
+        }
+        return String.join("\n", listStringsDev);
     }
 
     private void searchSameContact(Developer developer) {

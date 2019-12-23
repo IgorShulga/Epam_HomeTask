@@ -37,10 +37,10 @@ public class DeveloperController {
 
         try {
             System.out.println("Input name - ");
-            newDev.setName(inputFromKeyboard.input());
+            newDev.setFirstName(inputFromKeyboard.input());
 
             System.out.println("Input surname - ");
-            newDev.setSurname(inputFromKeyboard.input());
+            newDev.setSecondName(inputFromKeyboard.input());
 
             System.out.println("Input phone - ");
             newDev.setPhone(inputFromKeyboard.input());

@@ -51,12 +51,12 @@ public class ReadAndWriteFile {
                                         dev.setId(Long.parseLong(value.split(SPLIT_FIELDS)[1].trim()));
                                         continue;
                                     }
-                                    if (value.contains("name")) {
-                                        dev.setName(value.split(SPLIT_FIELDS)[1].trim());
+                                    if (value.contains("firstName")) {
+                                        dev.setFirstName(value.split(SPLIT_FIELDS)[1].trim());
                                         continue;
                                     }
-                                    if (value.contains("surname")) {
-                                        dev.setName(value.split(SPLIT_FIELDS)[1].trim());
+                                    if (value.contains("secondName")) {
+                                        dev.setSecondName(value.split(SPLIT_FIELDS)[1].trim());
                                         continue;
                                     }
                                     if (value.contains("phone")) {

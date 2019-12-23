@@ -8,8 +8,8 @@ import java.util.Set;
 public class Developer {
 
     private Long id;
-    private String name;
-    private String surname;
+    private String firstName;
+    private String secondName;
     private String phone;
     private Account account;
     private Set<Skill> skills;
@@ -17,11 +17,11 @@ public class Developer {
     private boolean married;
     private LocalDateTime createDate;
 
-    public Developer(Long id, String name, String surname, String phone, Account account,
+    public Developer(Long id, String firstName, String secondName, String phone, Account account,
                      Set<Skill> skills, int age, boolean married, LocalDateTime createDate) {
         this.id = id;
-        this.name = name;
-        this.surname = surname;
+        this.firstName = firstName;
+        this.secondName = secondName;
         this.phone = phone;
         this.account = account;
         this.skills = skills;
@@ -41,20 +41,20 @@ public class Developer {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getSecondName() {
+        return secondName;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
     }
 
     public String getPhone() {
@@ -110,22 +110,22 @@ public class Developer {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Developer developer = (Developer) o;
-        return Objects.equals(name, developer.name) &&
-                Objects.equals(surname, developer.surname) &&
+        return Objects.equals(firstName, developer.firstName) &&
+                Objects.equals(secondName, developer.secondName) &&
                 Objects.equals(phone, developer.phone);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, surname, phone);
+        return Objects.hash(firstName, secondName, phone);
     }
 
     @Override
     public String toString() {
         return "Developer{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", secondName='" + secondName + '\'' +
                 ", phone='" + phone + '\'' +
                 ", account=" + account +
                 ", skills=" + skills +
