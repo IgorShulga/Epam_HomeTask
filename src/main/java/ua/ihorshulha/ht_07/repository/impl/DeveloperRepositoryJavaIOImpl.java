@@ -2,6 +2,7 @@ package ua.ihorshulha.ht_07.repository.impl;
 
 import ua.ihorshulha.ht_07.exception.ApplicationException;
 import ua.ihorshulha.ht_07.model.Developer;
+import ua.ihorshulha.ht_07.model.Skill;
 import ua.ihorshulha.ht_07.repository.DeveloperRepository;
 import ua.ihorshulha.ht_07.utils.ReadAndWriteFile;
 
@@ -43,14 +44,20 @@ public class DeveloperRepositoryJavaIOImpl implements DeveloperRepository {
                     "firstName" + SPLIT_FIELDS + dev.getFirstName() + SPLIT_OBJECTS +
                     "secondName" + SPLIT_FIELDS + dev.getSecondName() + SPLIT_OBJECTS +
                     "phone" + SPLIT_FIELDS + dev.getPhone() + SPLIT_OBJECTS +
-                    "account" + SPLIT_FIELDS + dev.getAccount() + SPLIT_OBJECTS +
-                    "skills" + SPLIT_FIELDS + dev.getSkills() + SPLIT_OBJECTS +
+                    "account" + SPLIT_FIELDS + dev.getAccount().getId() + SPLIT_OBJECTS +
+                    "skills" + SPLIT_FIELDS + getSkillsDev(dev.getSkills()) + SPLIT_OBJECTS +
                     "age" + SPLIT_FIELDS + dev.getAge() + SPLIT_OBJECTS +
                     "married" + SPLIT_FIELDS + dev.isMarried() + SPLIT_OBJECTS +
                     "create date" + SPLIT_FIELDS + dev.getCreateDate() + SPLIT_OBJECTS;
             listStringsDev.add(str);
         }
         return String.join("\n", listStringsDev);
+    }
+
+    private String getSkillsDev(Set<Skill> skills) {
+        List<String> list = skills.stream()
+                .map(skill -> skill.getId().toString()).collect(Collectors.toList());
+        return String.join(",", list);
     }
 
     private void searchSameContact(Developer developer) {
