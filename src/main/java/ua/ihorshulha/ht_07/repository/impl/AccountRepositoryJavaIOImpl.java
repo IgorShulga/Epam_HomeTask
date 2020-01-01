@@ -28,7 +28,7 @@ public class AccountRepositoryJavaIOImpl implements AccountRepository {
     public void update(Long id) throws IOException {
         List<Account> allAcc = getAll();
         for (int i = 0; i < allAcc.size(); i++) {
-            if (id == allAcc.get(i).getId()) {
+            if (id.equals(allAcc.get(i).getId())) {
                 allAcc.get(i).setAccountStatus(inputNewStatus(allAcc));
             }
         }
