@@ -44,8 +44,7 @@ public class SkillRepositoryJavaIOImpl implements SkillRepository {
         List<String> dateFile = workFile.readFromFile(SET_PATH + SKILLS_FILE);
         for (int i = 0; i < dateFile.size(); i++) {
             if (id == Long.parseLong(dateFile.get(i).split(SPLIT_FIELDS)[0].trim())) {
-                String name = dateFile.get(i).split(SPLIT_FIELDS)[1].trim();
-                String newName = updateNameSkill(name);
+                String newName = updateNameSkill();
                 dateFile.set(i, id + SPLIT_FIELDS + newName);
             }
         }
@@ -53,7 +52,7 @@ public class SkillRepositoryJavaIOImpl implements SkillRepository {
         workFile.writeToFile(SET_PATH + SKILLS_FILE, string);
     }
 
-    private String updateNameSkill(String name) throws IOException {
+    private String updateNameSkill() throws IOException {
         System.out.println("Input new Name for skill...");
         String line;
         do {

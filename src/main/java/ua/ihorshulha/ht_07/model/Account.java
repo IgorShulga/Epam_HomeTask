@@ -55,4 +55,8 @@ public class Account {
                 ", accountStatus=" + accountStatus +
                 '}';
     }
+
+    public enum AccountStatus {
+        ACTIVE, BANNED, DELETED;
+    }
 }

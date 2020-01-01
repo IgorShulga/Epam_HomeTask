@@ -22,6 +22,10 @@ public class AccountViewer{
                 num = Integer.parseInt(input);
                 switch (num) {
                     case 1: {
+//                        List<Skill> allSkills = controller.getAllSkills();
+//                        printAllSkills(allSkills);
+//                        break;
+
                         controller.getAllAccounts();
                         break;
                     }
