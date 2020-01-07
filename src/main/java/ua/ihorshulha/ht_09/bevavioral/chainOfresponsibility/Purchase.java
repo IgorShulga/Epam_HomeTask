@@ -1,25 +1,25 @@
 package ua.ihorshulha.ht_09.bevavioral.chainOfresponsibility;
 
 public class Purchase {
-    private int Number;
-    private double Amount;
+    private int number;
+    private double amount;
     private String name;
 
-    public Purchase(int number, double amount, String name) {
-        Number = number;
-        Amount = amount;
+    Purchase(int number, double amount, String name) {
+        this.number = number;
+        this.amount = amount;
         this.name = name;
     }
 
     public int getNumber() {
-        return Number;
+        return number;
     }
 
     public void setNumber(int number) {
-        Number = number;
+        this.number = number;
     }
 
-    public double getAmount() {
-        return Amount;
+    double getAmount() {
+        return amount;
     }
 }

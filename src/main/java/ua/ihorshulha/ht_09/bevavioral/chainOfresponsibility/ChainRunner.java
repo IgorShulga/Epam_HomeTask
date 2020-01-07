@@ -2,22 +2,20 @@ package ua.ihorshulha.ht_09.bevavioral.chainOfresponsibility;
 
 public class ChainRunner {
     public static void main(String[] args) {
-        Approver president = new President(director);
-        Approver director = new Director(manager);
-        Approver manager = new Manager(director);
+        Purchase purchase1 = new Purchase(1000, 3050.00, "Library Books");
+        Purchase purchase2 = new Purchase(1001, 30500.10, "Lab Machines");
+        Purchase purchase3 = new Purchase(1002, 130500.00, "Apple Mac Books");
 
+        Approver manager = new Manager(10000);
+        Approver director = new Director(25000);
+        Approver president = new President(100000);
 
-        manager.setSuccessor(director);
-        director.setSuccessor(president);
+        manager.setNextApprover(director);
+        director.setNextApprover(president);
 
-        Purchase purchase = new Purchase(1000, 3050.00, "Library Books");
-        manager.processRequest(purchase);
-
-        purchase = new Purchase(1001, 30500.10, "Lab Machines");
-        director.processRequest(purchase);
-
-        purchase = new Purchase(1002, 130500.00, "Apple Mac Books");
-        president.processRequest(purchase);
+        manager.processRequest(purchase1);
+        director.processRequest(purchase2);
+        president.processRequest(purchase3);
     }
 
 }
